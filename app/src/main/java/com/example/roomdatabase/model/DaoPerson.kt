@@ -1,7 +1,8 @@
-package com.example.roomdatabase
+package com.example.roomdatabase.model
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+
 @Dao
 interface DaoPerson {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

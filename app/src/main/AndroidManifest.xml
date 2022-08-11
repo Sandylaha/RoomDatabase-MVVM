@@ -13,7 +13,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true"
             android:launchMode="singleInstance">
             <intent-filter>
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UpdateView"
+            android:name=".view.UpdateView"
             android:screenOrientation="portrait" />
     </application>
 

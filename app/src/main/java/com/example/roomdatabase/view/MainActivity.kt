@@ -1,22 +1,24 @@
-package com.example.roomdatabase
+package com.example.roomdatabase.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roomdatabase.R
+import com.example.roomdatabase.model.EntityPerson
+import com.example.roomdatabase.viewmodel.SharedViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity(), ViewAdapter.NoteClickInterface, ViewAdapter.NoteClickDeleteInterface {
 
 
-    lateinit var viewModal: SharedViewModel
-    lateinit var notesRV: RecyclerView
-    lateinit var addFAB: FloatingActionButton
+    private lateinit var viewModal: SharedViewModel
+    private lateinit var notesRV: RecyclerView
+    private lateinit var addFAB: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity(), ViewAdapter.NoteClickInterface, ViewAd
 
         notesRV.layoutManager = LinearLayoutManager(this)
 
-        val noteRVAdapter = ViewAdapter(this, this,this)
+        val noteRVAdapter = ViewAdapter(this, this)
 
 
         notesRV.adapter = noteRVAdapter
@@ -38,14 +40,14 @@ class MainActivity : AppCompatActivity(), ViewAdapter.NoteClickInterface, ViewAd
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(SharedViewModel::class.java)
+        )[SharedViewModel::class.java]
 
 
-        viewModal.allData.observe(this, Observer { list ->
+        viewModal.allData.observe(this) { list ->
             list?.let {
                 noteRVAdapter.updateList(it)
             }
-        })
+        }
         addFAB.setOnClickListener {
 
             val intent = Intent(this@MainActivity, UpdateView::class.java)
@@ -68,12 +70,12 @@ class MainActivity : AppCompatActivity(), ViewAdapter.NoteClickInterface, ViewAd
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setMessage("Are you sure want to Delete?")
             .setCancelable(false)
-            .setPositiveButton("Yes") { dialog, id ->
+            .setPositiveButton("Yes") { _, _ ->
 
                 viewModal.deleteNote(entityPerson)
                 Toast.makeText(this, "${entityPerson.name} Deleted", Toast.LENGTH_LONG).show()
             }
-            .setNegativeButton("No") { dialog, id ->
+            .setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
             }
         val alert = builder.create()

@@ -1,25 +1,25 @@
-package com.example.roomdatabase
+package com.example.roomdatabase.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roomdatabase.R
+import com.example.roomdatabase.model.EntityPerson
 
-class ViewAdapter (
-    val context: Context,
-    val noteClickInterface: NoteClickInterface,
-    val noteClickDeleteInterface: NoteClickDeleteInterface,
+class ViewAdapter(
+    private val noteClickInterface: NoteClickInterface,
+    private val noteClickDeleteInterface: NoteClickDeleteInterface,
     ):
     RecyclerView.Adapter<ViewAdapter.ViewHolder>() {
 
     private val allNotes = ArrayList<EntityPerson>()
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val noteTV = itemView.findViewById<TextView>(R.id.txtName)
-        val dateTV = itemView.findViewById<TextView>(R.id.txtAdd)
-        val deleteIV = itemView.findViewById<ImageView>(R.id.idIVDelete)
+        val noteTV: TextView = itemView.findViewById(R.id.txtName)
+        val dateTV: TextView = itemView.findViewById(R.id.txtAdd)
+        val deleteIV: ImageView = itemView.findViewById(R.id.idIVDelete)
 
     }
 
@@ -32,14 +32,14 @@ class ViewAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.noteTV.setText(allNotes.get(position).name)
-        holder.dateTV.setText(allNotes.get(position).address)
+        holder.noteTV.text = allNotes[position].name
+        holder.dateTV.text = allNotes[position].address
         holder.deleteIV.setOnClickListener {
-            noteClickDeleteInterface.onDeleteIconClick(allNotes.get(position))
+            noteClickDeleteInterface.onDeleteIconClick(allNotes[position])
         }
 
         holder.itemView.setOnClickListener {
-            noteClickInterface.onNoteClick(allNotes.get(position))
+            noteClickInterface.onNoteClick(allNotes[position])
         }
     }
 
@@ -50,7 +50,6 @@ class ViewAdapter (
     fun updateList(newList: List<EntityPerson>) {
         allNotes.clear()
         allNotes.addAll(newList)
-
         notifyDataSetChanged()
     }
 

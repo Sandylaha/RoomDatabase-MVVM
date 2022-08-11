@@ -1,11 +1,11 @@
-package com.example.roomdatabase
+package com.example.roomdatabase.model
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(EntityPerson::class), version = 1, exportSchema = false)
+@Database(entities = [EntityPerson::class], version = 1, exportSchema = false)
 abstract class DatabasePerson : RoomDatabase() {
     abstract fun getData(): DaoPerson
 

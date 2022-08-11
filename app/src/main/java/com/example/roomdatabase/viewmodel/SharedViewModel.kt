@@ -1,16 +1,19 @@
-package com.example.roomdatabase
+package com.example.roomdatabase.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.roomdatabase.repository.Repository
+import com.example.roomdatabase.model.DatabasePerson
+import com.example.roomdatabase.model.EntityPerson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SharedViewModel(application: Application) : AndroidViewModel(application) {
+class SharedViewModel(application: Application) : AndroidViewModel(application){
 
     val allData: LiveData<List<EntityPerson>>
-    val repository : Repository
+    private val repository : Repository
 
     init {
         val dao = DatabasePerson.getDataBase(application).getData()
