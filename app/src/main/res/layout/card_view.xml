@@ -3,77 +3,65 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="10dp"
-    card_view:cardElevation="15dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
+    card_view:cardElevation="20dp"
+    android:fitsSystemWindows="true">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="89dp"
-        android:background="@drawable/back"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="8dp">
-
+        android:layout_height="wrap_content"
+        android:background="@drawable/back">
 
         <ImageView
-            android:layout_width="63dp"
-            android:layout_height="60dp"
+            android:id="@+id/imageView"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/ic_baseline_face_24"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent" />
+            card_view:layout_constraintEnd_toStartOf="@+id/txtAdd"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtName"
-            android:layout_width="193dp"
-            android:layout_height="24dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="88dp"
+            android:layout_width="wrap_content"
+            android:maxWidth="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="20dp"
             android:text="sandip"
             android:textAlignment="textStart"
-            android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
-            card_view:layout_constraintBottom_toTopOf="@+id/txtAdd"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.764" />
+            android:textAppearance="@style/TextAppearance.Compat.Notification.Title" />
 
         <TextView
             android:id="@+id/txtAdd"
-            android:layout_width="191dp"
-            android:layout_height="26dp"
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:maxWidth="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="50dp"
             android:text="laha"
             android:textAlignment="textStart"
-            android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.519"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.746" />
+            android:textAppearance="@style/TextAppearance.Compat.Notification.Title" />
 
         <ImageView
             android:id="@+id/idIVDelete"
-            android:layout_width="38dp"
-            android:layout_height="33dp"
+            android:layout_width="44dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="24dp"
             android:padding="3dp"
             android:src="@drawable/ic_baseline_delete_24"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+         />
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

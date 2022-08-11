@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".view.UpdateView">
+    tools:context=".view.UpdateView"
+    android:fitsSystemWindows="true">
     <!--edit text for note title-->
     <EditText
         android:id="@+id/idEdtNoteName"
